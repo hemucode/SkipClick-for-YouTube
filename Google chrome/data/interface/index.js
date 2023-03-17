@@ -98,6 +98,7 @@ async function hydrate() {
         await chrome.storage.sync.set({ enabled });
       }
       await hydrate();
+      timer();
     });
   }catch(err) {
     console.log(err.message);
