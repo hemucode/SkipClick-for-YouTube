@@ -41,6 +41,30 @@
     }
 }
 
+#container_timer {
+  color: #333;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+#container_timer ul{
+    padding: 0;
+    margin: 0;
+}
+li {
+  display: inline-block;
+  font-size: 12px;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 20px;
+}
+
 body {
     margin: 0;
     font-family: var(--bs-font-sans-serif);

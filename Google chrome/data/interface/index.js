@@ -1,6 +1,40 @@
 async function init() {
-  return Promise.all([translate(), hydrate()]);
+  return Promise.all([timer(),translate(), hydrate()]);
 }
+
+function timer() {
+  const second = 1000,
+    minute = second * 60,
+    hour = minute * 60,
+    day = hour * 24;
+
+  if (localStorage.Install_timer_SkipClick_Codehemu) {
+    Install_timer = localStorage.Install_timer_SkipClick_Codehemu;
+  }else{
+    Install_timer = new Date();
+    localStorage.Install_timer_SkipClick_Codehemu = Install_timer;
+  }
+
+  const countDown = new Date(Install_timer).getTime(),
+    x = setInterval(function () {
+
+      const now = new Date().getTime(),
+        distance = now - countDown;
+
+      document.getElementById("days").innerText = Math.floor(distance / (day)),
+        document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+        document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+        document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+      //do something later when date is reached
+      if (distance < 0) {
+        document.getElementById("headline").innerText = "It's my birthday!";
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        clearInterval(x);
+      }
+    }, 0)
+};
 
 function translate() {
   return new Promise((resolve) => {
@@ -22,49 +56,52 @@ function translate() {
  * @returns Promise
  */
 async function hydrate() {
-   var a = new Promise(function(resolve, reject){
+  try {
+    var a = new Promise(function(resolve, reject){
         chrome.storage.sync.get({"enabled": true}, function(options){
             resolve(options.enabled);
         })
     });
 
-  const enabled = await a;
-  console.log(enabled);
+    const enabled = await a;
+    console.log(enabled);
 
-  // Hydrate Logo
-  const $logo = document.querySelector("#logo");
-  $logo.style.filter = enabled ? "grayscale(0)" : "grayscale(100%)";
-  $logo.style.opacity = enabled ? "1" : "0.7";
+    // Hydrate Logo
+    const $logo = document.querySelector("#logo");
+    $logo.style.filter = enabled ? "grayscale(0)" : "grayscale(100%)";
+    $logo.style.opacity = enabled ? "1" : "0.7";
 
-  // Hydrate Timesave info
+    // Hydrate Timesave info
 
-  // Hydrate Checkbox Label
-  const $checkboxLabel = document.querySelector("#button");
-  const $statusLabel = document.querySelector("#status");
+    // Hydrate Checkbox Label
+    const $checkboxLabel = document.querySelector("#button");
+    const $statusLabel = document.querySelector("#status");
 
 
-  $checkboxLabel.textContent = chrome.i18n.getMessage(
-    enabled ? "enabled" : "disabled"
-  );
-  // background: #4a0ab2;
-   $checkboxLabel.style.background = chrome.i18n.getMessage(
-    enabled ? "#4a0ab2" : "#535252"
-  );
+    $checkboxLabel.textContent = chrome.i18n.getMessage(
+      enabled ? "enabled" : "disabled"
+    );
+    // background: #4a0ab2;
+    document.querySelector("#button").style.background = (enabled ? "#4a0ab2" : "#535252");
 
-  $statusLabel.textContent = chrome.i18n.getMessage(
-    enabled ? "enabled" : "disabled"
-  );
+    $statusLabel.textContent = chrome.i18n.getMessage(
+      enabled ? "enabled" : "disabled"
+    );
 
-  $checkboxLabel.addEventListener("click", async (event) => {
-    if (enabled) {
-      const enabled = false;
-      await chrome.storage.sync.set({ enabled });
-    }else{
-      const enabled = true;
-      await chrome.storage.sync.set({ enabled });
-    }
-    await hydrate();
-  });
+    $checkboxLabel.addEventListener("click", async (event) => {
+      if (enabled) {
+        localStorage.clear();
+        const enabled = false;
+        await chrome.storage.sync.set({ enabled });
+      }else{
+        const enabled = true;
+        await chrome.storage.sync.set({ enabled });
+      }
+      await hydrate();
+    });
+  }catch(err) {
+    console.log(err.message);
+  }
 }
 
 init();

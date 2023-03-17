@@ -13,12 +13,26 @@
     <h1>SkipClick</h1>
     <h2>for YouTube</h2><span id="status"></span>
     <div class="w-100 text-center status-text">
-      <p id="enabled-text">Works automatically. You can turn off the addon here.</p>
+      <p id="enabled-text">Used this YouTube ads block addon will show below. </p>
       <p id="disabled-text" class="d-none">Works automatically. You can turn on the addon here.</p>
     </div>
-    <div class="text-muted-wrapper w-100 text-center">
-      <p>Refresh Youtube tabs after turning off or on.</p>
-    </div><button id="button" type="button"></button>
+
+    <div id="container_timer">
+      <ul>
+        <li><span id="days"></span>days</li>
+        <li><span id="hours"></span>Hours</li>
+        <li><span id="minutes"></span>Minutes</li>
+        <li><span id="seconds"></span>Seconds</li>
+      </ul>
+    </div>
+
+    <div id="content" class="emoji" style="display: none;">
+      <span>🥳</span>
+      <span>🎉</span>
+      <span>🎂</span>
+    </div>
+
+    <button id="button" type="button"></button>
   </div>
   <script type="text/javascript" src="index.js"></script>
 </body>
