@@ -94,6 +94,7 @@ async function hydrate() {
 
     $checkboxLabel.addEventListener("click", async (event) => {
       if (enabled) {
+        localStorage.Install_timer_SkipClick_Codehemu = new Date();
         clearInterval(x);
         const enabled = false;
         await chrome.storage.sync.set({ enabled });
