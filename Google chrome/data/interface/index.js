@@ -1,40 +1,7 @@
 async function init() {
-  return Promise.all([timer(),translate(), hydrate()]);
+  return Promise.all([translate(), hydrate()]);
 }
 
-function timer() {
-  const second = 1000,
-    minute = second * 60,
-    hour = minute * 60,
-    day = hour * 24;
-
-  if (localStorage.Install_timer_SkipClick_Codehemu) {
-    Install_timer = localStorage.Install_timer_SkipClick_Codehemu;
-  }else{
-    Install_timer = new Date();
-    localStorage.Install_timer_SkipClick_Codehemu = Install_timer;
-  }
-
-  const countDown = new Date(Install_timer).getTime(),
-    x = setInterval(function () {
-
-      const now = new Date().getTime(),
-        distance = now - countDown;
-
-      document.getElementById("days").innerText = Math.floor(distance / (day)),
-        document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-        document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-        document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-
-      //do something later when date is reached
-      if (distance < 0) {
-        document.getElementById("headline").innerText = "It's my birthday!";
-        document.getElementById("countdown").style.display = "none";
-        document.getElementById("content").style.display = "block";
-        clearInterval(x);
-      }
-    }, 0)
-};
 
 function translate() {
   return new Promise((resolve) => {
@@ -66,6 +33,43 @@ async function hydrate() {
     const enabled = await a;
     console.log(enabled);
 
+    if (enabled) {
+
+    }
+    const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+
+    if (localStorage.Install_timer_SkipClick_Codehemu) {
+      Install_timer = localStorage.Install_timer_SkipClick_Codehemu;
+    }else{
+      Install_timer = new Date();
+      localStorage.Install_timer_SkipClick_Codehemu = Install_timer;
+    }
+
+    const countDown = new Date(Install_timer).getTime(),
+      x = setInterval(function () {
+
+        const now = new Date().getTime(),
+          distance = now - countDown;
+
+        if (enabled) {
+          document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+        }
+
+        //do something later when date is reached
+        if (distance < 0) {
+          document.getElementById("headline").innerText = "It's my birthday!";
+          document.getElementById("countdown").style.display = "none";
+          document.getElementById("content").style.display = "block";
+          clearInterval(x);
+        }
+      }, 0)
+
     // Hydrate Logo
     const $logo = document.querySelector("#logo");
     $logo.style.filter = enabled ? "grayscale(0)" : "grayscale(100%)";
@@ -90,7 +94,7 @@ async function hydrate() {
 
     $checkboxLabel.addEventListener("click", async (event) => {
       if (enabled) {
-        localStorage.clear();
+        clearInterval(x);
         const enabled = false;
         await chrome.storage.sync.set({ enabled });
       }else{
@@ -98,7 +102,6 @@ async function hydrate() {
         await chrome.storage.sync.set({ enabled });
       }
       await hydrate();
-      timer();
     });
   }catch(err) {
     console.log(err.message);
