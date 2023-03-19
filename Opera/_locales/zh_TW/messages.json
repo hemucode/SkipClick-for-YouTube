@@ -1,0 +1,20 @@
+{
+   "disabled": {
+      "message": "禁用"
+   },
+   "enabled": {
+      "message": "啟用"
+   },
+   "extensionDescription": {
+      "description": "The description of the application",
+      "message": "無需在 YouTube 上觀看無聊的廣告，它們會自動跳過廣告"
+   },
+   "extensionName": {
+      "description": "The name of the application",
+      "message": "SkipClick for YouTube™"
+   },
+   "extensionShortName": {
+      "description": "The short_name (maximum of 12 characters recommended) is a short version of the extension's name.",
+      "message": "skip ads"
+   }
+}

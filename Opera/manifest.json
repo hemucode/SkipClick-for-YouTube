@@ -45,6 +45,6 @@
       "webNavigation", 
       "tabs" 
    ],
-   "short_name": "__MSG_extensionShortName__",
+   "short_name": "skip ads",
    "version": "1.1"
 }
