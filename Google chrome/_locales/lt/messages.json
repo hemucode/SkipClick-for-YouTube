@@ -1,58 +1,20 @@
 {
-   "actionTitle": {
-      "message": "Galimybės"
-   },
    "disabled": {
-      "message": "Išjungta"
-   },
-   "displayActionCountAsBadgeText": {
-      "description": "Boolean Option",
-      "message": "Rodyti užblokuotų užklausų skaičių ženklelyje"
-   },
-   "displayVideoBranding": {
-      "description": "Boolean Option",
-      "message": "Rodyti plėtinio informaciją žemiau vaizdo įrašo"
-   },
-   "dontAskAgain": {
-      "message": "Daugiau neklausk"
+      "message": "disabled"
    },
    "enabled": {
-      "message": "Įjungtas"
+      "message": "enabled"
    },
    "extensionDescription": {
       "description": "The description of the application",
-      "message": "Privatumui žinoma, saugi „YouTube™“ skelbimų blokavimo priemonė. Blokuoja skelbimus svetainėje YouTube.com."
+      "message": "No need to watch boring ads on YouTube, they will be Skip Ads automatically"
    },
    "extensionName": {
       "description": "The name of the application",
-      "message": "„YouTube™“ skelbimų blokas — best adblocker"
+      "message": "SkipClick for YouTube™"
    },
    "extensionShortName": {
       "description": "The short_name (maximum of 12 characters recommended) is a short version of the extension's name.",
-      "message": "Adb YouTube™"
-   },
-   "helpUsWithAReview": {
-      "message": "Padėkite mums pateikti apžvalgą"
-   },
-   "later": {
-      "message": "Vėliau"
-   },
-   "recommend": {
-      "description": "Shown by the recommend button",
-      "message": "Rekomenduoti"
-   },
-   "timesaveInfo": {
-      "description": "Tells the user how many time he saved already.",
-      "message": "Adblock for Youtube™ sutaupė apytiksliai. $savedTime$ visą gyvenimą.",
-      "placeholders": {
-         "savedTime": {
-            "content": "$1",
-            "example": "42"
-         }
-      }
-   },
-   "videoBranding": {
-      "description": "Shown below a video",
-      "message": "Išvalyta Adblock for YouTube™"
+      "message": "skip ads"
    }
 }

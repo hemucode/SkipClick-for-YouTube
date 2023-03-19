@@ -7,7 +7,7 @@
          "38": "data/icons/icon-38.png"
       },
       "default_popup": "data/interface/index.html?popup",
-      "default_title": "__MSG_actionTitle__"
+      "default_title": "__MSG_extensionName__"
    },
    "background": {
       "service_worker": "background.js"
