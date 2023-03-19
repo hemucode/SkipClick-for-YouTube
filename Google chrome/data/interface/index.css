@@ -11206,6 +11206,7 @@ body {
     height: 58px;
     margin-top: 10px;
     background: #4a0ab2;
+    text-transform: uppercase;
     border-radius: 4px;
     color: #fff;
     border: none;

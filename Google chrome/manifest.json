@@ -28,7 +28,7 @@
    "default_locale": "en",
    "description": "__MSG_extensionDescription__",
    "host_permissions": [ "\u003Call_urls>" ],
-   "homepage_url": "https://www.downloadhub.cloud/2022/11/adblock-for-youtube.html",
+   "homepage_url": "https://www.downloadhub.cloud/2023/03/SkipClick.html",
    "icons": {
       "128": "data/icons/icon-128.png",
       "64": "data/icons/icon-64.png",
@@ -46,7 +46,7 @@
       "tabs" 
    ],
    "short_name": "__MSG_extensionShortName__",
-   "version": "1.0.6",
+   "version": "1.1",
    "web_accessible_resources": [ {
       "matches": [ "*://*.youtube.com/*" ],
       "resources": [ "lib/scriptlets.js" ]
